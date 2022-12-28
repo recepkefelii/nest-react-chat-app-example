@@ -1,33 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useState,useEffect } from 'react'
+import {
+  Route,
+  Routes,
+} from "react-router-dom";
+import {LoginPage} from './pages/LoginPage.jsx'
+import {HomePage} from './pages/HomePage.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [messageText, setMessageText] = useState('')
+  const [joined, setJoined] = useState(false)
+  const [name, setName] = useState('')
+  const [typingDisplay, setTypingDisplay] = useState('');
 
+  const sendMessage = () => {
+    socket.emit('createMessage', {message: messageText}, () => {
+      setMessageText('')
+    } )
+  }
+
+  const join = () => {
+    socket.emit('join', {name: name}, () => {
+      setJoined(true)
+    })
+  }
+  let timeout;
+  const typing = () => {
+    socket.emit('typing', {isTyping: true}, () => {
+     timeout = setTimeout(() => {
+        socket.emit('typing', {isTyping: false}), 2000
+     })
+    })
+  }
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+    <>
+     <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+     </Routes>
+    </>
   )
 }
 

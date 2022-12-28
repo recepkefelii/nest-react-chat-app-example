@@ -5,7 +5,7 @@ import { Message } from './entities/message.entity';
 
 @Injectable()
 export class MessageService {
-  messages: Message[] = [{name: 'test', message: 'test'}];
+  messages: Message[] = [{name: 'leos', message: 'naber aşko'}];
   clintToUser = {};
 
   identfy(clintId:string,name:string){
