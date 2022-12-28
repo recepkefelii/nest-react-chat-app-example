@@ -8,6 +8,12 @@ node_modules/
 /.devcontainer
 *.code-workspace
 
+.DS_Store
+node_modules
+dist/
+/.dist
+./server/dist
+
 # Vim
 [._]*.s[a-v][a-z]
 [._]*.sw[a-p]
