@@ -3,8 +3,8 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-import {LoginPage} from './pages/LoginPage.jsx'
-import {HomePage} from './pages/HomePage.jsx'
+import LoginPage from './pages/LoginPage.jsx'
+import HomePage from './pages/HomePage.jsx'
 
 function App() {
   const [messageText, setMessageText] = useState('')

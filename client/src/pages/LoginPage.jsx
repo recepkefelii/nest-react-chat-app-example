@@ -2,7 +2,11 @@ import React from 'react'
 
 function LoginPage() {
   return (
-    <div>LoginPage</div>
+    <div>
+      <div>
+        <input type="text" placeholder="place enter a name" />
+      </div>
+    </div>
   )
 }
 

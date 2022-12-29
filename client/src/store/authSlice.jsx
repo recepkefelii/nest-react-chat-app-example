@@ -15,3 +15,5 @@ export const authSlice = createSlice({
   })
 
   export const { setName } = authSlice.actions
+
+  export default authSlice.reducer
