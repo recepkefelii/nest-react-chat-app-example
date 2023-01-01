@@ -5,7 +5,7 @@ import { Message } from './entities/message.entity';
 
 @Injectable()
 export class MessageService {
-  messages: Message[] = [{name: 'leos', message: 'naber aşko'}];
+  messages: Message[] = [{name: 'leos', message: 'nabers'}];
   clintToUser = {};
 
   identfy(clintId:string,name:string){
@@ -20,7 +20,7 @@ export class MessageService {
   create(createMessageDto: CreateMessageDto) {
     const message = {...createMessageDto};
     this.messages.push(message);
-    return message;
+    return this.messages;
   }
   findAll() {
     return this.messages;

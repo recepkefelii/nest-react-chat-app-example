@@ -24,11 +24,13 @@ export class MessageGateway {
   }
 
   @SubscribeMessage('findAllMessage')
-  findAll() {
+  findAll() {    
     return this.messageService.findAll();
   }
   @SubscribeMessage('message')
   joinRoom(@MessageBody('name') name:string, @ConnectedSocket() clint:Socket){
+    console.log(name,clint.id);
+    
     return this.messageService.identfy(name,clint.id);
   }
 
