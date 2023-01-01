@@ -29,7 +29,6 @@ const HomePage = ({user}) => {
           setJoined(true)
         })
       }
-
   return (
     <div>
       <div>
